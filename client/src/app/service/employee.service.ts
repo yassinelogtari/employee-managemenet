@@ -8,10 +8,14 @@ import { Enmployee } from '../enmployee';
 export class EmployeeService {
 
 
-  private baseUrl="http://localhost:8090/api/v1/employees"
+  private baseUrl="http://localhost:8090/api/v1/"
   constructor( private httpClient:HttpClient) { }
 
   getEmployeesList(){
-    return this.httpClient.get<Enmployee[]>(`${this.baseUrl}`)
+    return this.httpClient.get<Enmployee[]>(`${this.baseUrl}employees`)
+  }
+
+  addEmployee(employee :Enmployee){
+    return this.httpClient.post(`${this.baseUrl}addEmployee`,employee)
   }
 }
