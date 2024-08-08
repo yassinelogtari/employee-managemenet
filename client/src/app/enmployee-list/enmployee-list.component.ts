@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Enmployee } from '../enmployee';
 import { EmployeeService } from '../service/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-enmployee-list',
@@ -8,10 +9,12 @@ import { EmployeeService } from '../service/employee.service';
   styleUrl: './enmployee-list.component.css',
 })
 export class EnmployeeListComponent implements OnInit {
+
   employees: Enmployee[];
 
   constructor(
-    private employeeService : EmployeeService
+    private employeeService : EmployeeService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -25,5 +28,9 @@ export class EnmployeeListComponent implements OnInit {
     this.employees=data
       
     })
+  }
+  updateEmployee(id:number){
+    this.router.navigate(['updateEmployee',id]);
+
   }
 }
